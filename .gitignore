@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+.env/
+*.env
+
+# Poetry
+poetry.lock
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MyPy / Ruff / Pytest caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+
+# Logs
+*.log
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Artifacts & model outputs
+artifacts/
+!artifacts/.gitkeep  # оставим пустую папку, если нужна
+
+# Data (если не хочешь хранить сырые данные в репо)
+data/
+!data/.gitkeep
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.DS_Store

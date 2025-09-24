@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "ml-classic-starter"
+version = "0.1.0"
+description = "Starter template for classic ML projects with scikit-learn"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{ include = "mlc", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+scikit-learn = "*"
+pyyaml = "*"
+pandas = "^2.3.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+ruff = "*"
+mypy = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

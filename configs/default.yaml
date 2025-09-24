@@ -1,0 +1,30 @@
+data:
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+  test_path: "artifacts/test.csv"
+
+features:
+  num_cols: null        # если null — будут выбраны все числовые признаки автоматически
+  cat_cols: null        # если null — категориальных признаков нет
+  num_imputer:
+    strategy: median
+  cat_imputer:
+    strategy: most_frequent
+  scaler: {}
+  encoder:
+    handle_unknown: ignore
+
+model:
+  GradientBoostingClassifier:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 3
+    random_state: 42
+  save_path: "artifacts/model.pkl"
+  preprocessor_path: "artifacts/preprocessor.pkl"
+
+infer:
+  artifacts_dir: "artifacts"
+  input_path: "artifacts/test.csv"
+  output_path: "artifacts/preds.csv"
