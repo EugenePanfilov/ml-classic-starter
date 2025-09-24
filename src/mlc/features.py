@@ -1,10 +1,13 @@
 from typing import Optional, Union
+
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
 from mlc.config import FeaturesConfig, config
+
 
 class Features:
     def __init__(self, cfg: Optional[FeaturesConfig] = None) -> None:
@@ -12,7 +15,9 @@ class Features:
         self.preprocessor: Optional[ColumnTransformer] = None
 
     def fit(self, X: pd.DataFrame, y: Union[pd.Series, None] = None) -> "Features":
-        num_cols = self.cfg.num_cols or X.select_dtypes(include="number").columns.tolist()
+        num_cols = (
+            self.cfg.num_cols or X.select_dtypes(include="number").columns.tolist()
+        )
         cat_cols = self.cfg.cat_cols or []
 
         transformers = []
@@ -44,7 +49,9 @@ class Features:
             raise ValueError("Preprocessor is not fitted yet")
         return self.preprocessor.transform(X)
 
-    def fit_transform(self, X: pd.DataFrame, y: Union[pd.Series, None] = None) -> pd.DataFrame:
+    def fit_transform(
+        self, X: pd.DataFrame, y: Union[pd.Series, None] = None
+    ) -> pd.DataFrame:
         return self.fit(X, y).transform(X)
 
     def get_feature_names_out(self) -> list[str]:

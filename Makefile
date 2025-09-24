@@ -13,7 +13,7 @@ typecheck:
 	poetry run mypy src/mlc
 
 test:
-	poetry run pytest -q --cov=src/mlc
+	poetry run pytest -v
 
 train:
 	poetry run python scripts/train.py --config configs/default.yaml

@@ -1,10 +1,13 @@
 import os
 from pathlib import Path
-from typing import Union, Tuple
+from typing import Tuple, Union
+
+import joblib
 import numpy as np
 import pandas as pd
-import joblib
+
 from mlc.config import config
+
 
 class InferenceModel:
     def __init__(self, artifacts_dir: Union[str, Path] = "artifacts") -> None:
@@ -23,7 +26,7 @@ class InferenceModel:
     def predict(
         self,
         input_path: Union[str, Path, None] = None,
-        output_path: Union[str, Path, None] = None
+        output_path: Union[str, Path, None] = None,
     ) -> Tuple[np.ndarray, np.ndarray]:
         input_path = Path(input_path or config.infer.input_path)
         output_path = Path(output_path or config.infer.output_path)

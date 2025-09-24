@@ -1,11 +1,14 @@
 from pathlib import Path
 from typing import Optional, Union
+
 import joblib
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
+
 from mlc.config import ModelConfig, config
 from mlc.features import Features
+
 
 class Model:
     def __init__(
