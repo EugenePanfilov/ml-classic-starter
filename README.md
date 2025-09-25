@@ -2,15 +2,15 @@
 
 ### 1. Установить зависимости
 ```bash
-poetry install
+make install
 ```
 ### 2. Обучить модель
 ```bash
-poetry run python scripts/train.py
+make train
 ```
 ### 3. Сделать предсказания
 ```bash
-poetry run python scripts/predict.py
+make predict
 ```
 
 
