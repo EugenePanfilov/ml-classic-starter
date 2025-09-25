@@ -45,7 +45,7 @@ utils.py — логирование и установка детерминизм
 
 Запуск тестов:
 ```bash
-poetry run pytest -v
+make test
 ```
 
 Покрывают:
