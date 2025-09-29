@@ -1,3 +1,6 @@
+![CI](https://github.com/EugenePanfilov/ml-classic-starter/actions/workflows/ci.yml/badge.svg)
+
+
 # 🚀 Быстрый старт (3 шага)
 
 ### 1. Установить зависимости
