@@ -31,3 +31,6 @@ disallow_untyped_defs = false
 minversion = "6.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
+
+[tool.mypy]
+ignore_missing_imports = true
