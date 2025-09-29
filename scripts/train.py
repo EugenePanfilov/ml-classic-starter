@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 from mlc.config import config
 from mlc.data import Data
@@ -27,9 +27,9 @@ def main():
 
     from sklearn.metrics import (
         accuracy_score,
-        roc_auc_score,
         average_precision_score,
         confusion_matrix,
+        roc_auc_score,
     )
 
     metrics = {
