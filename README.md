@@ -113,6 +113,7 @@ jobs:
 
       - name: Run tests
         run: poetry run pytest -q --cov=src/mlc
+```
 
 
 # Пример логов
