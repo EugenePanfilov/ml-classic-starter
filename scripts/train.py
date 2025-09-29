@@ -1,4 +1,5 @@
 import os
+import json
 
 from mlc.config import config
 from mlc.data import Data
@@ -21,18 +22,32 @@ def main():
     model.fit(X_train, y_train)
 
     logger.info("🔎 Оцениваем на валидации...")
-    proba_val = model.predict_proba(X_val)[:, 1]
-    preds_val = model.predict(X_val)
+    y_proba = model.predict_proba(X_val)[:, 1]
+    y_pred = model.predict(X_val)
 
-    from sklearn.metrics import accuracy_score, roc_auc_score
+    from sklearn.metrics import (
+        accuracy_score,
+        roc_auc_score,
+        average_precision_score,
+        confusion_matrix,
+    )
 
     metrics = {
-        "roc_auc_val": float(roc_auc_score(y_val, proba_val)),
-        "accuracy_val": float(accuracy_score(y_val, preds_val)),
+        "roc_auc": roc_auc_score(y_val, y_proba),
+        "pr_auc": average_precision_score(y_val, y_proba),
+        "accuracy": accuracy_score(y_val, y_pred),
+        "confusion_matrix": confusion_matrix(y_val, y_pred).tolist(),
     }
 
     # Логируем метрики
     log_metrics(metrics, logger)
+
+    # Сохраняем метрики в artifacts/metrics.json
+    os.makedirs("artifacts", exist_ok=True)
+    metrics_path = os.path.join("artifacts", "metrics.json")
+    with open(metrics_path, "w") as f:
+        json.dump(metrics, f, indent=2)
+    logger.info(f"📊 Метрики сохранены в {metrics_path}")
 
     logger.info("💾 Сохраняем артефакты...")
     os.makedirs(os.path.dirname(config.model.save_path), exist_ok=True)
