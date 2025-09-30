@@ -29,7 +29,7 @@ class FeaturesConfig:
 
 @dataclass
 class ModelConfig:
-    GradientBoostingClassifier: Dict[str, Any] = field(
+    HistGradientBoostingClassifier: Dict[str, Any] = field(
         default_factory=lambda: {"random_state": 42}
     )
     save_path: Path = Path("artifacts/model.pkl")

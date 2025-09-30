@@ -4,7 +4,7 @@ from typing import Optional, Union
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier
 
 from mlc.config import ModelConfig, config
 from mlc.features import Features
@@ -24,7 +24,7 @@ class Model:
             self.features = features_or_cfg
 
         self.cfg = model_cfg or config.model
-        self.model = GradientBoostingClassifier(**self.cfg.GradientBoostingClassifier)
+        self.model = HistGradientBoostingClassifier(**self.cfg.HistGradientBoostingClassifier)
 
     def fit(self, X: pd.DataFrame, y: Union[pd.Series, np.ndarray]) -> "Model":
         if self.features.preprocessor is None:
