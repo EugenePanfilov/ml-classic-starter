@@ -37,7 +37,7 @@ data.py — загрузка датасета breast_cancer, генерация 
 
 features.py — препроцессинг (числовые + категориальные признаки, scaler, OHE).
 
-model.py — обёртка над GradientBoostingClassifier + сохранение артефактов.
+model.py — обёртка над HistGradientBoostingClassifier + сохранение артефактов.
 
 infer.py — загрузка модели и предсказание на новых данных.
 
